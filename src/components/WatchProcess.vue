@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <q-btn color="green" v-if="!inCart(id)" @click="addToCart(id)">Add to cart</q-btn>
-    <q-btn color="red" v-else @click="removeItemFromCart(id)">Remove from cart</q-btn>
-    <div v-if="inCart(id)">
-      <q-btn color="yellow" class="q-mr-sm" @click="setCnt({id, cnt: 1})">+</q-btn>
-      <q-btn color="yellow" @click="setCnt({id, cnt: -1})">-</q-btn>
+  <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" mode="out-in">
+    <div v-if="!inCart(id)" :key="1">
+      <q-btn color="dark" @click="addToCart(id)" no-caps>Add to cart</q-btn>
     </div>
-  </div>
+    <div v-else :key="2">
+      <q-btn color="orange-9" class="q-mr-xs" @click="setCnt({id, cnt: 1})" no-caps>+</q-btn>
+      <q-btn color="red-5" @click="removeItemFromCart(id)" no-caps>Remove from cart</q-btn>
+      <q-btn color="orange-9" class="q-ml-xs" @click="setCnt({id, cnt: -1})" no-caps>-</q-btn>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -26,9 +28,6 @@ export default {
   methods:{
     ...mapMutations('cart', ['addToCart']),
     ...mapActions('cart', ['removeItemFromCart', 'setCnt'])
-  },
-  mounted(){
-
   }
 }
 </script>

@@ -4,6 +4,7 @@ export function setCart (state, cart) {
 
 export function addToCart(state, id){
   state.cart.push({ id, cnt: 1 })
+  localStorage.setItem('cart', JSON.stringify(state.cart));
 }
 
 export function removeFromCart(state, ind){
@@ -12,7 +13,6 @@ export function removeFromCart(state, ind){
 
 export function addCnt(state, { ind, cnt }){
   state.cart[ind].cnt += cnt;
-  localStorage.setItem('cart', JSON.stringify(state.cart));
 }
 
 export function clearCart(state){

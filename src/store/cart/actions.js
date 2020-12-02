@@ -28,13 +28,15 @@ export async function checkOutCart({ commit }, cart){
   const response = await cartApi.stripe_session(cart);
   if(response.status === "success")
   {
+    commit("clearCart")
+    localStorage.removeItem('cart');
+
     const result = await stripe.redirectToCheckout({
         sessionId: response.session.id
       });
       if (result.error)
         return false;
   }
-  commit("clearCart")
   return true;
   }
 

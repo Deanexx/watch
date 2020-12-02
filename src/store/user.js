@@ -44,6 +44,14 @@ export default {
       autoLoginResolver();
     },
 
+    async updatePassword({ commit }, form){
+      let { data, status } = await userApi.updatePassword(form);
+
+      if (status === 'success')
+        commit('setUser', data);
+      return status;
+    },
+
     async logout({ state, commit }){
       let { status } = await userApi.logout();
 

@@ -4,12 +4,18 @@ export async function signupUser(form){
   let { data } = await server.post("users/signup", form, {
     errorSuppression: true
   });
-  console.log("inside api", data)
   return data;
 }
 
 export async function loginUser(form){
   let { data } = await server.post("users/login", form, {
+    errorSuppression: true
+  })
+  return data;
+}
+
+export async function updatePassword(form){
+  let { data } = await server.post("users/updatePassword", form, {
     errorSuppression: true
   })
   return data;

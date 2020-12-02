@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 // import example from './cart'
 import watches from './watches'
 import cart from './cart'
+import email from './email'
 import user from './user'
 
 import { Notify } from 'quasar';
@@ -24,6 +25,7 @@ import { addResponseHandler } from './../apis/http';
 const Store = new Vuex.Store({
   modules: {
     watches,
+    email,
     cart,
     user
   },

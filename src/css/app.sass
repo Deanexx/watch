@@ -4,3 +4,26 @@
 
 body
   font-family: "Rubik"
+
+body.desktop .q-focusable:focus .q-focus-helper body.desktop .q-hoverable:hover .q-focus-helper
+  background: inherit !important
+  opacity: 0 !important
+
+body.ios .q-hoverable:active .q-focus-helper
+  background: inherit !important
+  opacity: 0 !important
+
+.q-focus-helper
+  opacity: 0 !important
+  transition: unset !important
+
+@keyframes fadeInDown
+  from
+    opacity: 0
+    transform: translate3d(-50%, -100%, 0)
+  to
+    opacity: 1
+    transform: translate3d(-50%, 0, 0)
+
+.animate__fadeInDown
+  animation: fadeInDown .2s

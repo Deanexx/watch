@@ -1,6 +1,7 @@
 export default {
   cart: state => state.cart,
-  cartLength: state => state.cart.length,
+  cartAmount: state => state.cart.length,
+  amount: (state, getters) => getters.cart.length,
   item: state => id => state.cart.find(el => el.id === id),
   inCart: (state, getters) => id => getters.index(id) !== -1,
   index: state => id => state.cart.findIndex(el => el.id === id),
